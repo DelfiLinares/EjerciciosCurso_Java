@@ -31,7 +31,7 @@ public class clothing {
     }
 
     public void setPrecio(Double precio) {
-        this.precio = (precio > minimo) ? precio : minimo;
+        this.precio = (precio > minimo) ? precio : minimo; //? if, : else
     }
 
     public String getTalle() {
