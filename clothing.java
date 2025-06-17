@@ -3,8 +3,8 @@ public class clothing {
     Double precio;
     String talle;
 
-    private double maximo = 10.0;
-    private double minimo = 0.2;
+    public double static min_precio = 10.0;
+    public double static min_tax = 0.2;
 
     public clothing(String descripcion, Double precio, String talle) {
         this.descripcion = descripcion;
@@ -27,11 +27,11 @@ public class clothing {
     }
 
     public Double getPrecio() {
-        return precio + (precio * minimo);
+        return precio + (precio * min_tax);
     }
 
     public void setPrecio(Double precio) {
-        this.precio = (precio > minimo) ? precio : minimo; //? if, : else
+        this.precio = (precio > min_tax) ? precio : minimo; //? if, : else
     }
 
     public String getTalle() {
@@ -40,5 +40,11 @@ public class clothing {
 
     public void setTalle(String talle) {
         this.talle = talle;
+    }
+
+    @Override
+    public String toString(){
+        return item.descripcion + ", Talle:" + item.talle
+                        + ", Precio:" + item.precio;
     }
 }
