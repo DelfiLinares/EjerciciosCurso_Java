@@ -1,73 +1,42 @@
 import java.lang.reflect.Array;
 import java.util.ArrayList;
 
-public class customer {
-    String name;
-    String talla;
-    private ArrayList<clothing>items;
-
-    public void agregar(ArrayList<clothing> itemsito) {
-        items = itemsito;
-    }
-    public ArrayList<clothing> getItems() {
-        return items;
-    }
-
-    public double totalDelaCompra(){
+public class ShopApp {
+    public static void main(String [] args){
+        double tax = 0.2;
         double total = 0.0;
-        for (clothing item : items){
-  //          if (c1.talla.equals(item.talle)){
-                //total = total + item.precio;
-                System.out.println("Descripcion:" + item.descripcion + ", Talle:" + item.talle
-                        + ", Precio:" + item.precio);
-      //          total= total + total * tax;
-      //          if (total > 15){
-        //            break;
-          //      }
-            }
-        //}
-        return total;
-    }
+        int measurement=3;
 
-    public customer(String name, String talla) {
-        this.name = name;
-        this.talla = talla;
-    }
 
-    public customer(){
-        this.name = "Pepo";
-        this.talla = "S";
-    }
+        System.out.println("Welcome to Duke Choice shop");
 
-    public String getName() {
-        return name;
-    }
+        customer c1=new customer("Pinky","S");
+        System.out.println("El nombre del customer es:" + c1.name);
 
-    public void setName(String name) {
-        this.name = name;
-    }
+        System.out.println("El precio minimo es" + clothing.min_precio);
 
-    public String getTalla() {
-        return talla;
-    }
+        clothing item1 = new clothing("Campera Azul",20.9,"M");
+        clothing item2 = new clothing("Remera naranja", 10.5, "S");
+        clothing item3 = new clothing("Remera azul", 10.5, "S");
+        clothing item4 = new clothing("Bufanda verde", 5.0, "S");
 
-    public void setTalla(String talla) {
-        this.talla = talla;
-    }
+       // System.out.println("La primera prenda es: "+item1);
+       // System.out.println("La segunda prenda es: "+item2);
 
-    public void setSize(int measurement){
-        switch (measurement){
-            case 1, 2, 3:
-                setTalla("S");
-                break;
-            case 4, 5, 6:
-                setTalla("M");
-                break;
-            case 7, 8, 9:
-                setTalla("L");
-                break;
-            default:
-                setTalla("X");
+        ArrayList<clothing>items = new ArrayList<clothing>();
+        items.add(item1);
+        items.add(item2);
+        items.add(item3);
+        items.add(item4);
+
+        //total = (item1.precio + item2.precio * 2) * 1+tax;
+        //System.out.println("Total= " +total);
+
+        c1.setSize(measurement);
+        c1.agregar(items);
+
+        for (clothing item : c1.getItems()) {
+            System.out.println("Item" + item);
         }
     }
 }
