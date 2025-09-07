@@ -1,4 +1,4 @@
-package objetos;
+package cursoJava;
 
 import objetos.ClothingNew;
 
@@ -89,4 +89,5 @@ public class CustomerNew extends Persona
         public static void main(String[] args) {
         }
     }
+
 
