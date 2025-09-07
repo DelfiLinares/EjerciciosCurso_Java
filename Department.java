@@ -1,4 +1,4 @@
-package objetos;
+package cursoJava;
 
 import java.util.ArrayList;
 
