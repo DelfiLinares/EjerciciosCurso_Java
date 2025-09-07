@@ -1,50 +1,42 @@
-public class clothing {
-    String descripcion;
-    Double precio;
-    String talle;
+package cursoJava;
 
-    public double static min_precio = 10.0;
-    public double static min_tax = 0.2;
-
-    public clothing(String descripcion, Double precio, String talle) {
-        this.descripcion = descripcion;
-        this.precio = precio;
-        this.talle = talle;
-    }
-
-    public clothing(){
-        this.descripcion = "Remera";
-        this.precio = 11.2;
-        this.talle = "M";
-    }
-
-    public String getDescripcion() {
-        return descripcion;
-    }
-
-    public void setDescripcion(String descripcion) {
-        this.descripcion = descripcion;
-    }
-
-    public Double getPrecio() {
-        return precio + (precio * min_tax);
-    }
-
-    public void setPrecio(Double precio) {
-        this.precio = (precio > min_tax) ? precio : minimo; //? if, : else
-    }
-
-    public String getTalle() {
-        return talle;
-    }
-
-    public void setTalle(String talle) {
-        this.talle = talle;
-    }
-
-    @Override
-    public String toString(){
-        return item.descripcion + ", Talle:" + item.talle
-                        + ", Precio:" + item.precio;
-    }
+public class ClothingNew implements Comparable<ClothingNew>
+{
+        private String description;
+        private double price;
+        private char size='s';
+        private final double min_tax=1.2;
+        private final int min_price=10;
+        public ClothingNew(String description, double price, char size){
+                this.description=description;
+                this.price=price;
+                this.size=size;
+        }
+        public String getDescription() {
+                return description;
+        }
+        public void setDescription(String description) {
+                this.description = description;
+        }
+        public double getPrice() {
+                price = price * min_tax;
+                return price;
+        }
+        public void setPrice(double price) {
+                if(price<min_price) {
+                        price = min_price;
+                }
+                this.price = price;
+        }
+        public char getSize() {
+                return size;
+        }
+        public void setSize(char size) {
+                this.size = size;
+        }
+        public static void main(String[] args) {    }
+        @Override
+        public int compareTo(ClothingNew o) {
+                return this.description.compareTo(o.description);
+        }
 }
