@@ -1,42 +1,92 @@
-import java.lang.reflect.Array;
+package objetos;
+
+import objetos.ClothingNew;
+
+import java.time.LocalDate;
 import java.util.ArrayList;
 
-public class ShopApp {
-    public static void main(String [] args){
-        double tax = 0.2;
-        double total = 0.0;
-        int measurement=3;
+public class CustomerNew extends Persona
+{
+    private char size;
+    private ArrayList<ClothingNew> items;
+    public void addItems(ArrayList<ClothingNew> someItems){
+        items=someItems;
 
+    }
+    public CustomerNew(int dni, int edad, LocalDate fechaNacimiento, String nombre, char size, ArrayList<ClothingNew>items) {
+        super(dni, edad, nombre, fechaNacimiento);
 
-        System.out.println("Welcome to Duke Choice shop");
+        this.size = size;
+        this.items = items;
+    }
+    public CustomerNew() {
+        super(100101010, 18, "juan", LocalDate.now());
+        this.size = size;
+        this.items = new ArrayList<>();
+    }
+    public CustomerNew(char size, ArrayList<ClothingNew>items) {
 
-        customer c1=new customer("Pinky","S");
-        System.out.println("El nombre del customer es:" + c1.name);
+        this.size = size;
+        this.items = items;
+    }
+    public double getTotalClothingCost(){
+        double total=0.0;
+            for (ClothingNew item : items){
+                if(getSize()==item.getSize()) {
+                    System.out.println("Datos items:"+" "+item.getDescription()+" "+ item.getPrice()+ " "+item.getSize());
+                    total = total + item.getPrice();
+            }
+        }
+            return total;
+    }
+    public double getPromedioClothingCost(){
+    double promedio=0.0;
+    int cantidad=0;
+    double promi =0.0;
 
-        System.out.println("El precio minimo es" + clothing.min_precio);
-
-        clothing item1 = new clothing("Campera Azul",20.9,"M");
-        clothing item2 = new clothing("Remera naranja", 10.5, "S");
-        clothing item3 = new clothing("Remera azul", 10.5, "S");
-        clothing item4 = new clothing("Bufanda verde", 5.0, "S");
-
-       // System.out.println("La primera prenda es: "+item1);
-       // System.out.println("La segunda prenda es: "+item2);
-
-        ArrayList<clothing>items = new ArrayList<clothing>();
-        items.add(item1);
-        items.add(item2);
-        items.add(item3);
-        items.add(item4);
-
-        //total = (item1.precio + item2.precio * 2) * 1+tax;
-        //System.out.println("Total= " +total);
-
-        c1.setSize(measurement);
-        c1.agregar(items);
-
-        for (clothing item : c1.getItems()) {
-            System.out.println("Item" + item);
+    for (ClothingNew item : items){
+        if(getSize()==item.getSize()) {
+            System.out.println("Datos de los items:"+" "+item.getDescription()+" "+ item.getPrice()+ " "+item.getSize());
+            promedio = promedio + item.getPrice();
+            cantidad = cantidad+1;
         }
     }
+    try{
+       promedioo=promedio/cantidad;
+    }
+    catch (ArithmeticException e){
+        System.out.println("no se divide por cero");
+    }
+    return promiedoo;
 }
+    public ArrayList<ClothingNew> getItems() {
+        return items;
+    }
+    public void setItems(ArrayList<ClothingNew>items) {
+        this.items = items;
+    }
+    public char getSize() {
+        return size;
+    }
+    public void setSize(char size) {
+        this.size = size;
+    }
+    public void setSize(int mesurement){
+        switch(mesurement){
+            case 1,2,3:
+                size = 's';
+                break;
+                case 4, 5, 6:
+                    size='m';
+                    break;
+                    case 7, 8 ,9:
+                        size='l';
+                        break;
+                        default:
+                            size='x';
+        }
+    }
+        public static void main(String[] args) {
+        }
+    }
+
